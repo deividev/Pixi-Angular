@@ -22,6 +22,29 @@ export class Actor extends Sprite {
 
 }
 
+export class Button extends Sprite {
+
+  protected app: PixiGame;
+  protected aspectRatio: number;
+
+  constructor(app, spriteSrc: string) {
+    const texture = new Texture(app.loader.resources[spriteSrc].texture);
+    super(texture);
+    this.aspectRatio = this.height / this.width;
+    this.app = app;
+    this.buttonMode = true;
+    this.interactive = true;
+  }
+
+  update(delta) {
+  }
+
+  die() {
+    this.parent?.removeChild(this);
+  }
+
+}
+
 export interface Asset {
   name: string;
   src: string;

@@ -13,6 +13,7 @@ export class PixiGame extends Application {
   score$: Observable<number>;
   titleScreen: TitleScreen;
   gameScreen = new Container();
+  mapScreen = new Container();
 
   private _score$ = new BehaviorSubject<number>(0);
   protected readonly assets: Asset[];
@@ -77,9 +78,17 @@ export class PixiGame extends Application {
     this.stage.addChild(this.titleScreen);
   }
 
+  changeScene(scene) {
+    debugger
+    this.stage.removeChild(this.gameScreen);
+    this.stage.addChild(this.mapScreen);
+    this.ticker.add(this.update, this);
+  }
+
   setGameScreen() {
     this.stage.removeChild(this.titleScreen);
     this.stage.addChild(this.gameScreen);
+    this.stage.addChild(this.mapScreen);
     this.ticker.add(this.update, this);
   }
 
@@ -91,12 +100,16 @@ export class PixiGame extends Application {
     this.gameScreen.children.filter(el => el instanceof Actor).forEach((actor: Actor) => {
       actor.update(delta);
     });
+    this.mapScreen.children.filter(el => el instanceof Actor).forEach((actor: Actor) => {
+      actor.update(delta);
+    });
   }
 
   public finishGame() {
     this.finishGame$.next();
     this.setTitleScreen();
     this.gameScreen.removeChildren();
+    this.mapScreen.removeChildren();
     this.ticker.remove(this.update, this);
     this.resetGame();
   }

@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild} from '@angular/core';
 import {SurviveHalloweenGame} from './survive-halloween.game';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,9 +21,8 @@ export class AppComponent implements AfterViewInit {
     });
     setTimeout(() => {
       this.pixiGame.setGameScreen();
-    }, 200);
+    }, 1000);
   }
-
 
 }
 
