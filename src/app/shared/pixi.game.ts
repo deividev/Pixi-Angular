@@ -78,12 +78,12 @@ export class PixiGame extends Application {
     this.stage.addChild(this.titleScreen);
   }
 
-  changeScene(scene) {
-    debugger
-    this.stage.removeChild(this.gameScreen);
-    this.stage.addChild(this.mapScreen);
-    this.ticker.add(this.update, this);
-  }
+  // changeScene(scene) {
+  //   debugger
+  //   // this.stage.removeChild(this.gameScreen);
+  //   this.stage.addChild(this.mapScreen);
+  //   this.ticker.add(this.update, this);
+  // }
 
   setGameScreen() {
     this.stage.removeChild(this.titleScreen);

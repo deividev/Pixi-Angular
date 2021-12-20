@@ -237,7 +237,7 @@ class ChangeScene extends Button {
     this.on('pointerdown', (e: InteractionEvent) => {
       const scene = 'map';
       debugger
-      this.app.changeScene(scene);
+      app.changeScene(scene);
     })
 
   }
@@ -393,7 +393,7 @@ class Enemy extends Actor {
     }
     this.on('pointerdown', (e: InteractionEvent) => {
       const scene = 'map';
-      this.app.changeScene(scene);
+      app.changeScene(scene);
       this.life--;
       this.hit();
       if (this.life <= 0) {
